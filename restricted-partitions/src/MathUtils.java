@@ -43,6 +43,7 @@ public class MathUtils {
     }
 
     private static void padVec(ArrayList<Complex> vec, int n) {
+        vec.ensureCapacity(n);
         while(vec.size() < n) {
             vec.add(new Complex(0, 0));
         }
@@ -90,7 +91,7 @@ public class MathUtils {
     }
 
     private static ArrayList<Integer> generatePartitionPoly(int num, int limit) {
-        ArrayList<Integer> res = new ArrayList<>();
+        ArrayList<Integer> res = new ArrayList<>(num * limit + 1);
         for(int i = 0; i <= num * limit; ++i) {
             res.add(i % num == 0 ? 1 : 0);
         }
